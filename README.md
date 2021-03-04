@@ -3,6 +3,8 @@
 _ Thông tin thành viên nhóm:
 	+ Vũ Đình Đạt 51703057
 	+ Dương Chính Nghĩa 51703140
+	+ Lê Hữu Luân 51703127
+	+ Trần Gia Kỳ 51703120
 _Hướng dẫn cài đặt
 Tạo database bằng file classroom.sql
 Chỉnh sửa thông tin kết nối database trong trong file Source_Code/conn.php cho đúng username và password
