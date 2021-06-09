@@ -1,7 +1,7 @@
 <?php
 	define('servername','localhost');
 	define('username','root');
-	define('password','root');
+	define('password','');
 	define('db','classroom');
 	// Import PHPMailer classes into the global namespace
 	// These must be at the top of your script, not inside a function
@@ -404,7 +404,7 @@
 		<?php
 		}
 	}
-	//addClass_byEmail('dinhdat187199@gmail.com','f9FjAP');
+	//addClass_byEmail('luanletest@gmail.com','f9FjAP');
 	//PHÂN QUYỀN 
 	function phanquyen($matk,$trangthai) {
 		$conn = open_db();
@@ -465,13 +465,13 @@
 		    $mail->isSMTP();                                            // Send using SMTP
 		    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
 		    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-		    $mail->Username   = 'dinhdat187199@gmail.com';                     // SMTP username
-		    $mail->Password   = 'zjndxyokdndfgeaz';                               // SMTP password
+		    $mail->Username   = 'luanletest@gmail.com';                     // SMTP username
+		    $mail->Password   = 'htbknhmzrmxqtprr';                               // SMTP password
 		    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
 		    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
 		    //Recipients
-		    $mail->setFrom('dinhdat187199@gmail.com', 'Mời tham gia lớp học');
+		    $mail->setFrom('luanletest@gmail.com', 'Mời tham gia lớp học');
 		    $mail->addAddress($email, 'Người nhận');     // Add a recipient
 
 		    // Content
@@ -996,11 +996,12 @@
 		return get_name_tk($row['matk']);
 
 	}
-	//Lấy giaảng viên theo lớp trang admin
+	//Lấy giảng viên theo lớp trang admin
 	function getGV($malop) {
 		$result = get_matk($malop);
 		$dataSV = $result['sinhvien'];
 		$dataGV = $result['giangvien'];
+		$stt = 0;
 		foreach ($dataGV as $dt) {	
 		?>
 			<tr>
@@ -1100,6 +1101,7 @@
 		$result = get_matk($malop);
 		$dataSV = $result['sinhvien'];
 		$dataGV = $result['giangvien'];
+		$stt = 0;
 		foreach ($dataSV as $dt) {	
 		?>
 			<tr>
@@ -1232,7 +1234,7 @@
 							<?php
 							if (checkTK_lop($matk,$row['malop']) == '1') {
 							?>
-								<a href="class.php?malop=<?=$row['malop']?>"><button type="button" class="btn btn-primary">Vào lớp</button></a>
+								<a href="class.php?malop=<?=$row['malop']?>"><button type="button" class="btn btn-primary">Xem thêm</button></a>
 							<?php
 							}
 							else if (checkTK_lop($matk,$row['malop']) == '2') {
@@ -1416,7 +1418,7 @@
 		$row = $result->fetch_assoc();
 		echo ($row['tenlop']);
 	}
-	//Hine6 thị các assingment
+	//Hiển thị các assingment
 	function getAssignment($malop) {
 		$conn = open_db();
 		$sql = "SELECT * from baidang where malop = ? and loaibd = 1";
@@ -1445,6 +1447,7 @@
 	}
 		}
 	}
+	//Lấy bài đăng
 	function getAssignment_index($malop) {
 		$conn = open_db();
 		$sql = "SELECT * from baidang where malop = ? and loaibd = 1";
@@ -1469,6 +1472,7 @@
 	}
 		}
 	}
+	//Tạo Deadline cho bài tập
 	function getDeadline($malop) {
 		$conn = open_db();
 		$sql = "SELECT * from baidang where malop = ? and loaibd = 1";
@@ -1606,7 +1610,7 @@
 		$mail = new PHPMailer(true);
 		try {
 		    //Server settings
-		    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;  
+		    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;  
 		    $mail ->CharSet = "UTF-8";                    // Enable verbose debug output
 		    $mail->isSMTP();                                            // Send using SMTP
 		    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
@@ -1616,7 +1620,7 @@
 		    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
 		    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 		    //Recipients
-		    $mail->setFrom('dinhdat187199@gmail.com', '[Accnouncement]');
+		    $mail->setFrom('luanletest@gmail.com', '[Accnouncement]');
 		    foreach ($to as $to_send) {
 		    	$mail->addAddress($to_send,'Classroom Mail');     // Add a recipient
 		    }
@@ -1625,7 +1629,7 @@
 		    $mail->Body    = "<p><h2>$name vừa bình luận, nhấn để xem</h2></p></br><a href='http://localhost:8888/classroom/class.php?malop=$malop'><button>Xem</button></a>";
 		    $mail->send();
 		} catch (Exception $e) {
-		    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+		    // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 		}
 	}
 		//GỬI MAIL KÍCH HOẠT TÀI KHOẢN
@@ -1647,7 +1651,7 @@
 		    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
 		    //Recipients
-		    $mail->setFrom('dinhdat187199@gmail.com', 'Test Feature Mail');
+		    $mail->setFrom('luanletest@gmail.com', 'Test Feature Mail');
 		    $mail->addAddress($email, 'Người nhận');     // Add a recipient
 		    // Content
 		    $mail->isHTML(true);                                  // Set email format to HTML
@@ -1676,7 +1680,7 @@
 		    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
 		    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 		    //Recipients
-		    $mail->setFrom('dinhdat187199@gmail.com', 'Classroom Accnouncement');
+		    $mail->setFrom('luanletest@gmail.com', 'Classroom Accnouncement');
 		    foreach ($to as $to_send) {
 		    	$mail->addAddress($to_send);     // Add a recipient
 		    }
@@ -1688,4 +1692,5 @@
 		    return "Message could not be sent. Mailer Error: {$mail->ErrorInfo}" ;
 		}
 	}
+
 ?>

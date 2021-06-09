@@ -411,6 +411,58 @@
                         }
                         ?>
 
+                        <?php
+                            if($quyen == 2){
+                        ?>
+                            <div class="post-topic" id="post-topic" onclick="clickPost()">
+                            <div class="abc">
+                                <img src="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/s40-c-fbw=1/photo.jpg" alt="">
+                            </div>
+
+                            <div class="bcd">Share something with your class…</div>
+                        </div>
+                        <div class="post-text" id="post-text">
+                            <div class="tab">
+                                <button class="tablinksPost active" onclick="postAssign(event, 'Post')">Post</button>
+                                
+                            </div>
+
+                            <div class="newpost tabcontentPost" id="Post">
+                                <form id="form-dangbai" method="POST" action="class.php?malop=<?=$malop?>&action=createAnnouncement" enctype="multipart/form-data">
+                                    <div class="post-input">
+                                        <textarea id="post-input" class="post-input" name="post-input" placeholder="Share with your class" rows="4"></textarea>
+                                    </div>
+                                    <div class="post-btn">
+                                        <div class="file-upload">
+                                            <div class="custom-file mb-3">
+                                                <ul hidden id='save-file-list'>
+                                                    <li class="save-file-item">
+                                                        <div class="save-file-format">
+                                                            <p id="show-file-format" class="format-text"></p>
+                                                        </div>
+                                                        <div id="show-file-name" class="save-file-name"></div>
+                                                        <div id="show-file-size"class="save-file-size"></div>
+                                                    </li>
+                                                </ul>
+                                                
+                                                <div class="choose-file">
+                                                    <label class="file-upload-label" for="file">Choose file from your computer</label>
+                                                    <input style="display: none;" type="file" id="file" name="filename_dangbai">                            
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-action">
+                                            <button class="btn-cancel" onclick="cancelPost()">Cancel</button>
+                                            <button class="btn-post" name="btn-dangbai">Post</button>
+                                        </div>
+                                    </div>                                   
+                                </form>
+                            </div>
+                        </div>
+                        <?php
+                            }
+                        ?>
+
                         <div id="show-post">
                             <?= getBaidang($malop,$matk)?>
                         </div>

@@ -1535,7 +1535,8 @@ ul#save-file-list {
 }
 
 .footer-content button.btn.btn-primary {
-    font-size: 13px;
+    margin-bottom: 7px;
+    font-size: 10px;
 }
 
 div#mySidebar {

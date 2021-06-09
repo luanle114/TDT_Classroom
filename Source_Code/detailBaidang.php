@@ -10,7 +10,7 @@
 		$malop = $_GET['malop'];
 		$result_baidang = get_detail_baidang($mabd);
 		$result = get_ds_lop($matk);
-		$data = $result['lop'];
+		// $data = $result['lop'];
 		$baidang = $result_baidang['baidang'];
 		if (isset($_POST['btn_nopbai'])) {
 			if ($_FILES['filename_nopbai']['size'] != 0) {
